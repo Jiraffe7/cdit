@@ -1,27 +1,24 @@
 package gov.tech.cdit.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Data
 @Entity
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NonNull
     @Column
     private String name;
 
+    @NonNull
     @Column
     private double salary;
 }
