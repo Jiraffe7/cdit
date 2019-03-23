@@ -1,11 +1,9 @@
 package gov.tech.cdit.controllers;
 
 import gov.tech.cdit.services.UserService;
-import gov.tech.cdit.views.UserView;
+import gov.tech.cdit.views.ValidSalaryResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController("/users")
 public class UserController {
@@ -17,7 +15,7 @@ public class UserController {
     }
 
     @GetMapping
-    public List<UserView> getUsers() {
-        return this.userService.getUsersWithValidSalary();
+    public ValidSalaryResponse getUsers() {
+        return new ValidSalaryResponse(userService.getUsersWithValidSalary());
     }
 }
